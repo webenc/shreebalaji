@@ -86,8 +86,8 @@
         <div class="flex items-center gap-4">
           <div class="hidden sm:flex items-center gap-4">
             <div class="px-3 py-1 rounded-full text-sm font-semibold bg-clip-padding glass" style="background: linear-gradient(90deg, rgba(245,158,11,0.14), rgba(6,182,212,0.08)); border:1px solid rgba(255,255,255,0.06);">Admission Open</div>
-            <a href="tel:+917905198306" class="text-sm text-slate-200/90 hover:text-white transition">+91 7905198306</a>
             <a href="tel:+918009116456" class="text-sm text-slate-200/90 hover:text-white transition">+91 8009116456</a>
+            <a href="tel:+917905198306" class="text-sm text-slate-200/90 hover:text-white transition">+91 7905198306</a>
           </div>
 
           <!-- Dark mode toggle -->
@@ -102,6 +102,9 @@
       <main class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
         <!-- Left: Info Card -->
         <section class="p-6 rounded-2xl glass shadow-lg">
+          <div class="mb-2">
+            <span class="inline-block px-3 py-1 rounded-full bg-primary/80 text-white font-semibold text-xs shadow">Director Name: Arika Ma'am</span>
+          </div>
           <div class="flex flex-col md:flex-row items-start justify-between gap-4">
             <div>
               <h2 class="text-3xl sm:text-4xl font-bold leading-tight">Play Group to 12th</h2>
@@ -116,8 +119,8 @@
 
           <div class="mt-6 flex flex-wrap gap-3">
             <a href="#contact" class="btn-primary px-4 py-2 rounded-lg bg-primary text-slate-900 font-semibold shadow hover:scale-105 transition">Enquire Now</a>
-            <a href="tel:+917905198306" class="px-4 py-2 rounded-lg border border-slate-600 text-slate-200 hover:bg-white/5 transition">Call: +91 7905198306</a>
             <a href="tel:+918009116456" class="px-4 py-2 rounded-lg border border-slate-600 text-slate-200 hover:bg-white/5 transition">Call: +91 8009116456</a>
+            <a href="tel:+917905198306" class="px-4 py-2 rounded-lg border border-slate-600 text-slate-200 hover:bg-white/5 transition">Call: +91 7905198306</a>
           </div>
 
           <div class="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
@@ -145,6 +148,35 @@
 
           <form id="queryForm" class="mt-4 space-y-4">
             <div>
+              <label class="block text-sm" for="subject">Subject</label>
+              <select id="subject" class="w-full bg-transparent border border-slate-700 rounded-md px-3 py-2 focus-outline" aria-label="Subject">
+                <option>CBSE</option>
+                <option>ICSE</option>
+                <option>UP Board</option>
+                <option>All Subjects</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm" for="class">Class</label>
+              <select id="class" class="w-full bg-transparent border border-slate-700 rounded-md px-3 py-2 focus-outline" aria-label="Class">
+                <option>Play Group</option>
+                <option>Nursery</option>
+                <option>KG</option>
+                <option>1st</option>
+                <option>2nd</option>
+                <option>3rd</option>
+                <option>4th</option>
+                <option>5th</option>
+                <option>6th</option>
+                <option>7th</option>
+                <option>8th</option>
+                <option>9th</option>
+                <option>10th</option>
+                <option>11th</option>
+                <option>12th</option>
+              </select>
+            </div>
+            <div>
               <label class="sr-only" for="role">Role</label>
               <select id="role" class="w-full bg-transparent border border-slate-700 rounded-md px-3 py-2 focus-outline" aria-label="Role">
                 <option>Parent</option>
@@ -167,12 +199,13 @@
               <textarea id="message" rows="4" class="w-full mt-1 px-3 py-2 rounded-md bg-transparent border border-slate-700 focus-outline" placeholder="Tell us about your query..."></textarea>
             </div>
 
-            <div class="flex items-center gap-3">
-              <button type="submit" class="px-4 py-2 rounded-lg bg-accent text-slate-900 font-semibold shadow hover:scale-105 transition">Send via Email</button>
+            <div class="flex items-center gap-3 flex-wrap">
+              <button type="submit" class="btn-primary px-4 py-2 rounded-lg bg-primary text-slate-900 font-semibold shadow hover:scale-105 transition">Send via Email</button>
+              <button type="button" id="smsBtn" class="btn-primary px-4 py-2 rounded-lg bg-primary text-slate-900 font-semibold shadow hover:scale-105 transition">Send Text Message</button>
               <button type="button" id="resetBtn" class="btn-reset px-4 py-2 rounded-lg border border-slate-600 text-slate-200 hover:bg-white/5 transition">Reset</button>
             </div>
 
-            <p class="text-xs text-slate-400">On submit, your message will open your mail client and populate an email to ankit123418@gmail.com. No data is sent to a server.</p>
+            <p class="text-xs text-slate-400">On submit, your message will open your mail client and populate an email to ankit123418@gmail.com. No data is sent to a server.<br>Alternatively, use <b>Send Text Message</b> to send your query as SMS to both numbers.</p>
           </form>
         </aside>
       </main>
@@ -237,11 +270,13 @@
         const name = document.getElementById('name').value.trim();
         const phone = document.getElementById('phone').value.trim();
         const message = document.getElementById('message').value.trim();
+        const subj = document.getElementById('subject').value;
+        const cls = document.getElementById('class').value;
 
         if (!name || !phone) { showToast('Please enter your name and phone number.'); return; }
 
-        const subject = `Query from ${role}: ${name}`;
-        const body = `Name: ${name}\nRole: ${role}\nPhone: ${phone}\n\nMessage:\n${message}\n\n--\nShree Balaji Coaching Center`;
+        const subject = `Query from ${role}: ${name} [${subj}, ${cls}]`;
+        const body = `Name: ${name}\nRole: ${role}\nPhone: ${phone}\nSubject: ${subj}\nClass: ${cls}\n\nMessage:\n${message}\n\n--\nShree Balaji Coaching Center`;
         const mailto = `mailto:ankit123418@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
         // Open mail client
@@ -250,6 +285,23 @@
       });
 
       document.getElementById('resetBtn').addEventListener('click', ()=> form.reset());
+
+      // SMS button handler: send SMS to both numbers with the same info
+      document.getElementById('smsBtn').addEventListener('click', function() {
+        const role = document.getElementById('role').value || 'Parent';
+        const name = document.getElementById('name').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const message = document.getElementById('message').value.trim();
+        const subj = document.getElementById('subject').value;
+        const cls = document.getElementById('class').value;
+        if (!name || !phone) { showToast('Please enter your name and phone number.'); return; }
+        const smsText = `Name: ${name}\nRole: ${role}\nPhone: ${phone}\nSubject: ${subj}\nClass: ${cls}\n${message}`;
+        // Try to open SMS app with both numbers (comma separated for Android, semicolon for iOS)
+        // We'll use comma for best compatibility
+        const smsUri = `sms:+918009116456,+917905198306?body=${encodeURIComponent(smsText)}`;
+        window.location.href = smsUri;
+        showToast('Opening your SMS app...');
+      });
     </script>
   </body>
 </html>
