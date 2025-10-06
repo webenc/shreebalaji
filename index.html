@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en" class="antialiased">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SHREE BALAJI COACHING CENTER</title>
+    <meta name="description" content="Shree Balaji Coaching Center - Play Group to 12th | ICSE, CBSE, UP Board" />
+
+    <script>
+      // Configure Tailwind for dark mode via class and add a few custom colors
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primary: '#f97316', // orange
+              accent: '#06b6d4' // cyan
+            }
+          }
+        }
+      }
+    </script>
+    <!-- Tailwind CDN (play) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      /* Glassmorphism base */
+      .glass {
+        background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.08);
+        backdrop-filter: blur(8px) saturate(120%);
+      }
+      .glass-dark {
+        background: rgba(15,23,42,0.5);
+        border: 1px solid rgba(255,255,255,0.06);
+        backdrop-filter: blur(8px) saturate(120%);
+      }
+      /* Smooth appearance for focus/hover */
+      .focus-outline:focus {
+        outline: none;
+        box-shadow: 0 0 0 4px rgba(96,165,250,0.12);
+        border-color: rgba(96,165,250,0.6);
+      }
+      /* small toast */
+      .toast-enter { transform: translateY(8px) scale(0.98); opacity: 0 }
+      .toast-enter-active { transform: translateY(0) scale(1); opacity: 1; transition: all 220ms ease }
+
+      /* Light mode overrides when html has .light */
+      html.light body {
+        /* soft purple-blue gradient background for light mode */
+        background: linear-gradient(180deg, #eef2ff 0%, #e9d5ff 40%, #dbeafe 100%) !important;
+        color: #0f172a !important;
+      }
+      html.light .glass {
+        background: linear-gradient(135deg, rgba(249,115,22,0.08), rgba(6,182,212,0.06)) !important;
+        border: 1px solid rgba(2,6,23,0.06) !important;
+        box-shadow: 0 6px 18px rgba(2,6,23,0.04);
+        color: #0b1220 !important;
+        backdrop-filter: blur(6px) saturate(120%);
+      }
+      html.light .glass .font-medium, html.light .glass p, html.light .glass div { color: #0b1220 !important; }
+      html.light a { color: #0b1220 !important; }
+      html.light .text-slate-300 { color: #475569 !important; }
+
+      /* Button overrides in light mode: make primary/reset buttons dark text */
+      html.light .btn-primary { background: linear-gradient(90deg,#f97316, #06b6d4) !important; color: #04111a !important; }
+      html.light .btn-reset { border-color: rgba(2,6,23,0.08) !important; color: #04111a !important; background: rgba(255,255,255,0.36); }
+    </style>
+  </head>
+  <body class="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-slate-200">
+
+    <div class="max-w-6xl mx-auto p-6">
+      <header class="flex flex-col sm:flex-row items-center sm:items-start justify-between gap-4 mb-8">
+        <div class="flex items-center gap-4">
+          <!-- Hanuman / Balaji image: portrait-friendly container to show full image -->
+          <div class="w-20 h-36 sm:w-28 sm:h-48 p-2 rounded-xl glass flex items-center justify-center shadow-md transition-transform hover:scale-105 overflow-hidden border border-white/10">
+            <img src="assets/hanuman.jpeg" alt="Balaji image" class="w-full h-full object-contain" loading="lazy"/>
+          </div>
+
+          <div>
+            <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight">SHREE BALAJI COACHING CENTER</h1>
+            <p class="text-sm text-slate-300">ICSE | CBSE | UP Board</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <div class="hidden sm:flex items-center gap-4">
+            <div class="px-3 py-1 rounded-full text-sm font-semibold bg-clip-padding glass" style="background: linear-gradient(90deg, rgba(245,158,11,0.14), rgba(6,182,212,0.08)); border:1px solid rgba(255,255,255,0.06);">Admission Open</div>
+            <a href="tel:+917905198306" class="text-sm text-slate-200/90 hover:text-white transition">+91 7905198306</a>
+            <a href="tel:+918009116456" class="text-sm text-slate-200/90 hover:text-white transition">+91 8009116456</a>
+          </div>
+
+          <!-- Dark mode toggle -->
+          <button id="themeToggle" aria-label="Toggle dark mode" class="p-2 rounded-full glass focus:outline-none focus:ring-2 focus:ring-offset-1">
+            <svg id="moon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M17.293 13.293A8 8 0 116.707 2.707a7 7 0 1010.586 10.586z" />
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <main class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+        <!-- Left: Info Card -->
+        <section class="p-6 rounded-2xl glass shadow-lg">
+          <div class="flex flex-col md:flex-row items-start justify-between gap-4">
+            <div>
+              <h2 class="text-3xl sm:text-4xl font-bold leading-tight">Play Group to 12th</h2>
+              <p class="mt-2 text-slate-300">Coaching for all subjects with experienced faculty. Structured curriculum, small batches, and personalized attention.</p>
+            </div>
+
+            <div class="text-right md:text-right w-full md:w-56">
+              <div class="text-sm text-slate-300">Address</div>
+              <div class="mt-1 font-medium">E-1/124, Sec. H, LDA Colony,<br class="hidden md:block"/> Kanpur Road, Lucknow</div>
+            </div>
+          </div>
+
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="#contact" class="btn-primary px-4 py-2 rounded-lg bg-primary text-slate-900 font-semibold shadow hover:scale-105 transition">Enquire Now</a>
+            <a href="tel:+917905198306" class="px-4 py-2 rounded-lg border border-slate-600 text-slate-200 hover:bg-white/5 transition">Call: +91 7905198306</a>
+            <a href="tel:+918009116456" class="px-4 py-2 rounded-lg border border-slate-600 text-slate-200 hover:bg-white/5 transition">Call: +91 8009116456</a>
+          </div>
+
+          <div class="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
+            <div class="p-3 rounded-xl glass text-center">
+              <div class="text-2xl font-semibold">ICSE</div>
+            </div>
+            <div class="p-3 rounded-xl glass text-center">
+              <div class="text-2xl font-semibold">CBSE</div>
+            </div>
+            <div class="p-3 rounded-xl glass text-center">
+              <div class="text-2xl font-semibold">UP Board</div>
+            </div>
+            <div class="p-3 rounded-xl glass text-center">
+              <div class="text-2xl font-semibold">All Subjects</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Right: Contact / Query Form -->
+        <aside id="contact" class="p-6 rounded-2xl glass shadow-lg">
+          <div class="flex items-center justify-between">
+            <h3 class="text-xl font-bold">Contact / Query</h3>
+            <div class="text-sm text-slate-300">Select role</div>
+          </div>
+
+          <form id="queryForm" class="mt-4 space-y-4">
+            <div>
+              <label class="sr-only" for="role">Role</label>
+              <select id="role" class="w-full bg-transparent border border-slate-700 rounded-md px-3 py-2 focus-outline" aria-label="Role">
+                <option>Parent</option>
+                <option>Teacher</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-sm">Name</label>
+              <input id="name" type="text" required class="w-full mt-1 px-3 py-2 rounded-md bg-transparent border border-slate-700 focus-outline" placeholder="Your full name" />
+            </div>
+
+            <div>
+              <label class="block text-sm">Phone Number</label>
+              <input id="phone" type="tel" required class="w-full mt-1 px-3 py-2 rounded-md bg-transparent border border-slate-700 focus-outline" placeholder="e.g. 7905198306" />
+            </div>
+
+            <div>
+              <label class="block text-sm">Description</label>
+              <textarea id="message" rows="4" class="w-full mt-1 px-3 py-2 rounded-md bg-transparent border border-slate-700 focus-outline" placeholder="Tell us about your query..."></textarea>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <button type="submit" class="px-4 py-2 rounded-lg bg-accent text-slate-900 font-semibold shadow hover:scale-105 transition">Send via Email</button>
+              <button type="button" id="resetBtn" class="btn-reset px-4 py-2 rounded-lg border border-slate-600 text-slate-200 hover:bg-white/5 transition">Reset</button>
+            </div>
+
+            <p class="text-xs text-slate-400">On submit, your message will open your mail client and populate an email to ankit123418@gmail.com. No data is sent to a server.</p>
+          </form>
+        </aside>
+      </main>
+
+      <footer class="mt-10 text-center text-sm text-slate-400">© SHREE BALAJI COACHING CENTER • E-1/124, Sec. H, LDA Colony, Kanpur Road, Lucknow</footer>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="fixed right-6 bottom-6 bg-slate-800/80 text-slate-100 px-4 py-2 rounded-md shadow-lg opacity-0 pointer-events-none"></div>
+
+    <script>
+      // Theme toggle
+      const themeToggle = document.getElementById('themeToggle');
+      const html = document.documentElement;
+
+      // initialize theme from localStorage; default is dark UI (no extra class)
+      const saved = localStorage.getItem('sb-theme');
+      if (saved === 'light') html.classList.add('light');
+      else html.classList.remove('light');
+
+      function updateToggleIcon() {
+        const moon = document.getElementById('moon');
+        if (!moon) return;
+        if (html.classList.contains('light')) {
+          // show sun-like color when in light mode
+          moon.classList.remove('text-yellow-400');
+          moon.classList.add('text-slate-600');
+        } else {
+          moon.classList.add('text-yellow-400');
+          moon.classList.remove('text-slate-600');
+        }
+      }
+      updateToggleIcon();
+
+      if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+          html.classList.toggle('light');
+          const mode = html.classList.contains('light') ? 'light' : 'dark';
+          localStorage.setItem('sb-theme', mode);
+          updateToggleIcon();
+        });
+      }
+
+      // Form handling -> mailto
+      const form = document.getElementById('queryForm');
+      const toast = document.getElementById('toast');
+
+      function showToast(text, ms = 2600) {
+        toast.textContent = text;
+        toast.classList.remove('opacity-0');
+        toast.style.pointerEvents = 'auto';
+        toast.animate([{opacity:0, transform:'translateY(8px)'},{opacity:1, transform:'translateY(0)'}],{duration:220,fill:'forwards'});
+        setTimeout(()=>{
+          toast.animate([{opacity:1, transform:'translateY(0)'},{opacity:0, transform:'translateY(8px)'}],{duration:220,fill:'forwards'});
+          toast.style.pointerEvents = 'none';
+        }, ms);
+      }
+
+      form.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        const role = document.getElementById('role').value || 'Parent';
+        const name = document.getElementById('name').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const message = document.getElementById('message').value.trim();
+
+        if (!name || !phone) { showToast('Please enter your name and phone number.'); return; }
+
+        const subject = `Query from ${role}: ${name}`;
+        const body = `Name: ${name}\nRole: ${role}\nPhone: ${phone}\n\nMessage:\n${message}\n\n--\nShree Balaji Coaching Center`;
+        const mailto = `mailto:ankit123418@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+        // Open mail client
+        window.location.href = mailto;
+        showToast('Opening your email client...');
+      });
+
+      document.getElementById('resetBtn').addEventListener('click', ()=> form.reset());
+    </script>
+  </body>
+</html>
