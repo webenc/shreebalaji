@@ -83,8 +83,8 @@
           </div>
         </div>
 
-        <div class="flex items-center gap-4">
-          <div class="hidden sm:flex items-center gap-4">
+        <div class="flex flex-col sm:flex-row items-center gap-4">
+          <div class="flex items-center gap-4">
             <div class="px-3 py-1 rounded-full text-sm font-semibold bg-clip-padding glass" style="background: linear-gradient(90deg, rgba(245,158,11,0.14), rgba(6,182,212,0.08)); border:1px solid rgba(255,255,255,0.06);">Admission Open</div>
             <a href="tel:+918009116456" class="text-sm text-slate-200/90 hover:text-white transition">+91 8009116456</a>
             <a href="tel:+917905198306" class="text-sm text-slate-200/90 hover:text-white transition">+91 7905198306</a>
@@ -101,7 +101,7 @@
 
       <main class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
         <!-- Left: Info Card -->
-        <section class="p-6 rounded-2xl glass shadow-lg">
+        <section class="p-4 sm:p-6 rounded-2xl glass shadow-lg">
           <div class="mb-2">
             <span class="inline-block px-3 py-1 rounded-full bg-primary/80 text-white font-semibold text-xs shadow">Director Name: Arika Ma'am</span>
           </div>
@@ -123,19 +123,11 @@
             <a href="tel:+917905198306" class="px-4 py-2 rounded-lg border border-slate-600 text-slate-200 hover:bg-white/5 transition">Call: +91 7905198306</a>
           </div>
 
-          <div class="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
-            <div class="p-3 rounded-xl glass text-center">
-              <div class="text-2xl font-semibold">ICSE</div>
-            </div>
-            <div class="p-3 rounded-xl glass text-center">
-              <div class="text-2xl font-semibold">CBSE</div>
-            </div>
-            <div class="p-3 rounded-xl glass text-center">
-              <div class="text-2xl font-semibold">UP Board</div>
-            </div>
-            <div class="p-3 rounded-xl glass text-center">
-              <div class="text-2xl font-semibold">All Subjects</div>
-            </div>
+          <div class="mt-6 sm:mt-8 grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-4">
+            <button type="button" class="p-2 sm:p-3 rounded-xl glass text-center font-semibold text-sm sm:text-base subject-btn" data-subject="ICSE">ICSE</button>
+            <button type="button" class="p-2 sm:p-3 rounded-xl glass text-center font-semibold text-sm sm:text-base subject-btn" data-subject="CBSE">CBSE</button>
+            <button type="button" class="p-2 sm:p-3 rounded-xl glass text-center font-semibold text-sm sm:text-base subject-btn" data-subject="UP Board">UP Board</button>
+            <button type="button" class="p-2 sm:p-3 rounded-xl glass text-center font-semibold text-sm sm:text-base subject-btn" data-subject="All Subjects">All Subjects</button>
           </div>
         </section>
 
@@ -199,7 +191,7 @@
               <textarea id="message" rows="4" class="w-full mt-1 px-3 py-2 rounded-md bg-transparent border border-slate-700 focus-outline" placeholder="Tell us about your query..."></textarea>
             </div>
 
-            <div class="flex items-center gap-3 flex-wrap">
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
               <button type="submit" class="btn-primary px-4 py-2 rounded-lg bg-primary text-slate-900 font-semibold shadow hover:scale-105 transition">Send via Email</button>
               <button type="button" id="smsBtn" class="btn-primary px-4 py-2 rounded-lg bg-primary text-slate-900 font-semibold shadow hover:scale-105 transition">Send Text Message</button>
               <button type="button" id="resetBtn" class="btn-reset px-4 py-2 rounded-lg border border-slate-600 text-slate-200 hover:bg-white/5 transition">Reset</button>
@@ -286,6 +278,19 @@
 
       document.getElementById('resetBtn').addEventListener('click', ()=> form.reset());
 
+      // Subject buttons scroll to form and set subject
+      document.querySelectorAll('.subject-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const subj = this.getAttribute('data-subject');
+          document.getElementById('subject').value = subj;
+          // Scroll to form
+          const form = document.getElementById('queryForm');
+          if (form) {
+            form.scrollIntoView({behavior: 'smooth', block: 'center'});
+          }
+        });
+      });
+
       // SMS button handler: send SMS to both numbers with the same info
       document.getElementById('smsBtn').addEventListener('click', function() {
         const role = document.getElementById('role').value || 'Parent';
@@ -305,4 +310,3 @@
     </script>
   </body>
 </html>
-
